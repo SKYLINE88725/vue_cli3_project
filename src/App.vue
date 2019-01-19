@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>111111111</p>
      <navbar></navbar>
      <footbar></footbar>
      <loading></loading>
