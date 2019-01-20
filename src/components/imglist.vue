@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import qs from "qs";
 export default {
   name: 'imglist',
   props:['list','dataName'],
@@ -21,7 +20,8 @@ export default {
 <style lang="scss" scoped>
   #imglist{
     width:100%;
-    margin:.6rem 0;
+    margin-bottom: 1.4rem;
+    margin-top: .6rem;
     position: relative;
     ul{
     width:100%;

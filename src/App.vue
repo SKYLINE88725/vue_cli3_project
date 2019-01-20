@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <p>111111111</p>
-     <navbar></navbar>
      <footbar></footbar>
      <loading></loading>
      <!-- <home></home> -->
@@ -9,12 +7,10 @@
   </div>
 </template>
 <script>
-import navbar from './components/navbar';
 import footbar from './components/footbar';
-import home from './views/home';
 export default {
   name:'app',
-  components:{navbar,footbar,home},
+  components:{footbar},
   // mounted:{}
 }
 

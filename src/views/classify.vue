@@ -1,30 +1,27 @@
 <template>
-  <div id="home">
+  <div id="classify">
     <top :bt="bt" dataName="home"></top>
     <!-- <slider></slider> -->
-    <navbar :navlist='navlist' dataName="home"></navbar>
-    <main></main>
-    <!-- <imglist :list='list' dataName="home"></imglist> -->
+    <!-- <navbar :navlist='navlist' dataName="home"></navbar>
+    <main></main> -->
+    <imglist :list='list' dataName="home"></imglist>
   </div>
 </template>
 
 <script>
 import top from '../components/top.vue';
-import navbar from '../components/navbar.vue';
-import main from '../components/main.vue';
-import slider from '../components/slider.vue';
+import imglist from '../components/imglist.vue';
 export default {
-  name: 'home',
-  components:{top,navbar,main},
+  name: 'classify',
+  components:{top,imglist},
   data(){
     return{
       list:[],
-      navlist:[],
-      bt:'主页'
+      bt:'分类'
     }
   },
   mounted(){
-    this.$http({
+    !this.list.length && this.$http({
       // url:'/360img?%20c=WallPaper&a=getAppsByCategory&cid=7&start=4&count=200',
       url:'/360img',
       params:{
@@ -39,15 +36,6 @@ export default {
         console.log("1111", res.data.data);
         this.list  = res.data.data
       }
-    ),
-    this.$http({
-      url:'/data/navlist.json'
-    }).then(
-      
-      res=> {
-        this.navlist=res.data,
-        console.log(res.data)
-      }
     )
   }
 }
@@ -55,7 +43,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-  #home{
+  #classify{
     width:100%;
     position: absolute;
   }

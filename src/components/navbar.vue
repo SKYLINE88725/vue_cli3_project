@@ -1,16 +1,34 @@
 <template>
-  <div id="navbar">
-    <ul>
-      <router-link tag="li" to="/home" active-class="active"><a href="javascript:;">主页</a></router-link>
-      <router-link tag="li" to="/flow" active-class="active"><a href="javascript:;">关注</a></router-link>
-      <router-link tag="li" to="/user" active-class="active"><a href="javascript:;">用户</a></router-link>
+  <div id="navbar" class="wrapper">
+    <ul :style="{width:navlist.length*.68+'rem'}" @mousemove="move($event)" class="content">
+        <li v-for="(item,index) in navlist" :key="item.uid" active-class="active" @click="tabClick(index)" :class="{selected:index == tabIndex}">
+          <a href="javascript:;" v-text="item.name"></a>
+        </li>
     </ul>
+
   </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll';
+
 export default {
-  name: 'navbar',
+  
+  name: 'navlist',
+  props:['navlist','dataName'],
+  data(){
+    return{
+      tabIndex:0,
+    }
+  },
+  methods:{
+    move:function(){
+
+    },
+    tabClick:function(index){
+      this.tabIndex = index
+    },
+  }
 }
 </script>
 
@@ -18,33 +36,34 @@ export default {
 <style lang="scss" scoped>
   #navbar{
     width:100%;
-    height:.6rem;
-    position: fixed;
-    left:0;
-    right:0;
-    top:0;
-    z-index: 998;
-    background:#5bd8ff;
-    // background: linear-gradient(90deg, #5bd8ff 33.33%,#9578ff 66.66%, #ff0000 100%);
+    top:.6rem;
+    position: relative;
+    background: #fff;
+    height:.48rem;
+    overflow: hidden;
     ul{
-    width:100%;
-    height:.6rem;
-    display: flex;
-    justify-content: space-around;
+    align-items: center;
+    height:.48rem;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:-1.3rem;
       li{
-      padding: 0 .2rem;
+      float:left;
+      height:.48rem;
+      width:.48rem;
+      padding:0 .1rem;
         a{
-          height:.6rem;
-          display:block;
-          font:.24rem/.60rem "";
-          color:#fff;
+          text-align: center;
+          display: block;
+          color:#f4f9;
+          margin-top:.06rem;
+          font:.24rem/.40rem "";
         }
       }
-      .active{
-        box-sizing:border-box;
-        border-bottom:.04rem solid #CA0C16; 
+      .selected{
         a{
-          color:#666;
+          border-bottom: solid .02rem $theme-color;
         }
       }
     }

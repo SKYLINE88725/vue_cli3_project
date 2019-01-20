@@ -1,4 +1,4 @@
-export const VIW_NAV = 'VIW_NAV';
-export const VIW_FOOT = 'VIW_FOOT';
-export const VIW_LOADING = 'VIW_LOADING';
+export const VIEW_TITLE = 'VIEW_TITLE';
+export const VIEW_FOOT = 'VIEW_FOOT';
+export const VIEW_LOADING = 'VIEW_LOADING';
 export const CHECK_USER = 'CHECK_USER';
