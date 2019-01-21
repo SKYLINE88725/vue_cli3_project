@@ -6,9 +6,17 @@ import store from '@/store/index';
 // 安装axios插件
 import axios from './plugins/axios';
 Vue.use(axios);
+// 安装jsonp插件
+import VueJsonp from 'vue-jsonp'
+Vue.use(VueJsonp);
 import qs from './plugins/qs';
 Vue.use(qs);
 
+// 轮播图插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// require styles
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 //iconfont矢量图标
 
 Vue.config.productionTip = false

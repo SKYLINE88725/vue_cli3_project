@@ -3,6 +3,7 @@ import Vue from 'vue';
 import store from '@/store'
 import * as types from '@/store/types';
 
+
 export default{
     install:function(Vue){
         Vue.prototype.$http=axios;

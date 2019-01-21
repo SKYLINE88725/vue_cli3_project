@@ -1,4 +1,7 @@
 export const VIEW_TITLE = 'VIEW_TITLE';
 export const VIEW_FOOT = 'VIEW_FOOT';
 export const VIEW_LOADING = 'VIEW_LOADING';
-export const CHECK_USER = 'CHECK_USER';
+export const CHANGE_USER = 'CHANGE_USER';
+export const CHANGE_NAVINDEX = 'CHANGE_NAVINDEX';
+export const CHANGE_NEWITEM = 'CHANGE_NEWITEM';
+export const CHANGE_TOPNAME = 'CHANGE_TOPNAME';

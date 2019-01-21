@@ -25,6 +25,12 @@ module.exports={
           ws: true,
           changeOrigin: true
         },
+        '/newlist': {
+          target: 'http://c.3g.163.com/nc/article/list',
+          ws: true,
+          changeOrigin: true
+
+        },
       }// string | Object
     },
     lintOnSave:false, //关闭esling警告

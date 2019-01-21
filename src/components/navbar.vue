@@ -1,8 +1,8 @@
 <template>
   <div id="navbar" class="wrapper">
-    <ul :style="{width:navlist.length*.68+'rem'}" @mousemove="move($event)" class="content">
-        <li v-for="(item,index) in navlist" :key="item.uid" active-class="active" @click="tabClick(index)" :class="{selected:index == tabIndex}">
-          <a href="javascript:;" v-text="item.name"></a>
+    <ul  class="content">
+        <li v-for="(item,index) in navlist" :key="item.uid" active-class="active" @click="tabClick(index);CHANGE_NAVINDEX(item.py)" :class="{selected:index == tabIndex}">
+          <a href="javascript:;" v-text="item.title"></a>
         </li>
     </ul>
 
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BScroll from 'better-scroll';
-
+import {mapGetters,mapActions} from 'vuex';
+import * as types from '../store/types';
 export default {
   
   name: 'navlist',
@@ -22,9 +22,7 @@ export default {
     }
   },
   methods:{
-    move:function(){
-
-    },
+    ...mapActions([types.CHANGE_NAVINDEX]),
     tabClick:function(index){
       this.tabIndex = index
     },
@@ -35,24 +33,27 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   #navbar{
+    
     width:100%;
     top:.6rem;
-    position: relative;
+    position: fixed;
     background: #fff;
     height:.48rem;
+    z-index: 980;
     overflow: hidden;
+    ::-webkit-scrollbar {display: none !important }
     ul{
-    align-items: center;
+    display: flex;
     height:.48rem;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left:-1.3rem;
+    overflow: auto;
+    position:absolute;
+    top: 0px;
+    
       li{
-      float:left;
-      height:.48rem;
-      width:.48rem;
-      padding:0 .1rem;
+      font-size: .16rem;
+      text-align: center;
+      flex-shrink: 0;
+      padding:0 .2rem;
         a{
           text-align: center;
           display: block;

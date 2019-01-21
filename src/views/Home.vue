@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <top :bt="bt" dataName="home"></top>
-    <!-- <slider></slider> -->
-    <navbar :navlist='navlist' dataName="home"></navbar>
-    <main></main>
+    <navbar :navlist='navlist' dataName="homeNav"></navbar>
+    <!-- <slider id="slider"></slider> -->
+    <songlist :songlist='songlist' dataName="homeSong"></songlist>
     <!-- <imglist :list='list' dataName="home"></imglist> -->
   </div>
 </template>
@@ -11,33 +11,24 @@
 <script>
 import top from '../components/top.vue';
 import navbar from '../components/navbar.vue';
-import main from '../components/main.vue';
+import songlist from '../components/songlist.vue';
 import slider from '../components/slider.vue';
 export default {
   name: 'home',
-  components:{top,navbar,main},
+  components:{top,navbar,songlist,slider},
   data(){
     return{
-      list:[],
+      songlist:[],
       navlist:[],
       bt:'主页'
     }
   },
   mounted(){
-    this.$http({
-      // url:'/360img?%20c=WallPaper&a=getAppsByCategory&cid=7&start=4&count=200',
-      url:'/360img',
-      params:{
-        "c":"WallPaper",
-        "a":"getAppsByCategory",
-        "cid":26,
-        "start":390,
-        "count":200,
-      }
-    }).then(
+    this.$http.get('/data/top_newlist.json').then(
       res=>{
-        console.log("1111", res.data.data);
-        this.list  = res.data.data
+        console.log("1111", res.data.result.data);
+        console.log(this.$store.state)
+        this.songlist  = res.data.result.data
       }
     ),
     this.$http({
@@ -57,7 +48,9 @@ export default {
 <style lang="scss">
   #home{
     width:100%;
-    position: absolute;
+    position: relative;
+    overflow: hidden;
+   
   }
 </style>
 
