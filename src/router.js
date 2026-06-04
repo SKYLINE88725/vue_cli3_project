@@ -1,30 +1,27 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 Vue.use(Router);
-/* components模块 */
-import imglist from '@/components/imglist.vue';
 
+// Views - Lazy loaded for better performance
+const Home = () => import('@/views/Home.vue');
+const Classify = () => import('@/views/classify.vue');
+const Carlist = () => import('@/views/carlist.vue');
+const Detail = () => import('@/views/detail.vue');
+const User = () => import('@/views/user.vue');
+const ErrorPage = () => import('@/views/error.vue');
 
-/* views路由 */
-import home from '@/views/home.vue';
-import classify from '@/views/classify.vue';
-import carlist from '@/views/carlist.vue';
-import detail from '@/views/detail.vue';
-import error from '@/views/error.vue';
-
-let routes=[
-    {path:'/home',component:home},
-    {path:'/classify',component:classify},
-    {path:'/carlist',component:carlist},
-    {path:'/detail',component:detail},
-
-
-
-    {path:'/',redirect:'/home'},
-    {path:'*',redrect:error},
+const routes = [
+  { path: '/home', component: Home, name: 'home' },
+  { path: '/classify', component: Classify, name: 'classify' },
+  { path: '/carlist', component: Carlist, name: 'carlist' },
+  { path: '/detail', component: Detail, name: 'detail' },
+  { path: '/user', component: User, name: 'user' },
+  { path: '/', redirect: '/home' },
+  { path: '*', redirect: '/error' }
 ];
 
 export default new Router({
-    routes
-})
+  mode: 'history',
+  routes
+});
