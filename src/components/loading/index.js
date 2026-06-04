@@ -1,5 +1,7 @@
-import loading from './components/loading';
+import Loading from './components/loading.vue';
 
-export default function(Vue){
-    Vue.component('loading',loading)
-}
+export default {
+  install(Vue) {
+    Vue.component('loading', Loading);
+  }
+};
